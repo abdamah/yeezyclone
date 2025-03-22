@@ -1,17 +1,17 @@
 "use client";
 
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
-const SuccessPage = () => {
+const SuccessPageContent = () => {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 ">
-      <div className="bg-white p-6 rounded-lg shadow-md max-w-lg text-center ">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-6 rounded-lg shadow-md max-w-lg text-center">
         <h1 className="text-2xl font-bold text-green-600 mb-4">
           Payment Successful!
         </h1>
@@ -48,10 +48,10 @@ const SuccessPage = () => {
   );
 };
 
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SuccessPage />
-    </Suspense>
-  );
-}
+const SuccessPage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <SuccessPageContent />
+  </Suspense>
+);
+
+export default SuccessPage;
