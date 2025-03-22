@@ -3,6 +3,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 const SuccessPage = () => {
   const searchParams = useSearchParams();
@@ -47,4 +48,10 @@ const SuccessPage = () => {
   );
 };
 
-export default SuccessPage;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessPage />
+    </Suspense>
+  );
+}
